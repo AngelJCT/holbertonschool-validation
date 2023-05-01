@@ -1,20 +1,15 @@
-HUGO := hugo
-POSTS_DIR := content/posts
-OUTPUT_DIR := dist
-THEME := ananke
-
 .PHONY: build clean post
 
 build:
-	$(HUGO) --theme=$(THEME) --destination=$(OUTPUT_DIR)
+	hugo
 
 clean:
-	rm -rf $(OUTPUT_DIR)
+	rm -rf dist
 
 post:
 	@if [ -z "$(POST_NAME)"] || [ -z "$(POST_TITLE)"]; then \
-		echo "Usage: make post POST_NAME=<post-name> POST_TITLE=<post-title>"; \
+		echo "Error: POST_NAME and POST_TITLE environment variables must be set."; \
 		exit 1; \
 	fi
-	@$(HUGO) new $(POSTS_DIR)/$(POST_NAME).md
+	hugo new posts/$(POST_NAME).md
 	echo "---\ntitle: \"$(POST_TITLE)\"\ndate: $$(date +%Y-%m-%dT%H:%M:%S%z)\ndraft: true\n---\n" > $(POSTS_DIR)/$(POST_NAME).md"
