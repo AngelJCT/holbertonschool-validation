@@ -12,4 +12,4 @@ post:
 		exit 1; \
 	fi
 	hugo new posts/$(POST_NAME).md
-	echo "---\ntitle: \"$(POST_TITLE)\"\ndate: $$(date +%Y-%m-%dT%H:%M:%S%z)\ndraft: true\n---\n" > content/posts/$(POST_NAME).md"
+	echo "---\ntitle: \"$(POST_TITLE)\"\ndate: $$(date +%Y-%m-%dT%H:%M:%S%z)\ndraft: true\n---\n" > content/posts/$(POST_NAME).md
