@@ -1,10 +1,10 @@
 .PHONY: build clean post
 
 build:
-	hugo
+	hugo --minify -s ./ -d ./dist/
 
 clean:
-	rm -rf dist/
+	rm -rf ./dist/
 
 post:
 	@if [ -z "$(POST_NAME)" ] || [ -z "$(POST_TITLE)" ]; then \
