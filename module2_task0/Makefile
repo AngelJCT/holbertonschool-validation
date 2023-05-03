@@ -1,4 +1,4 @@
-.PHONY: build run stop clean help
+.PHONY: build run stop clean help test
 
 help:	## Display help for the commands usage
 	@echo "help: Display this help message"
