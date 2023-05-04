@@ -3,8 +3,7 @@
 help:	## Display help for the commands usage
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-build:	## Compile the source code of the application to a binary named awesome-api
-	make lint
+build:	lint ## Compile the source code of the application to a binary named awesome-api
 	go build
 
 run:	## Run the application in background by executing the binary and write logs
