@@ -17,7 +17,7 @@ Before you can build, run, and test this project, you'll need to have the follow
 - Golang
 - make
 
-## Usage
+## Lifecycle
 
 1. Build the application: `make build`
 2. Run the application: `make run`
