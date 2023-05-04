@@ -19,12 +19,12 @@ Before you can build, run, and test this project, you'll need to have the follow
 
 ## Lifecycle
 
-1. Build the application: `make build`
-2. Run the application: `make run`
-3. Test the application: `make test`
-4. Stop the application: `make stop`
-5. Clean up: `make clean`
-6. Display help: `make help`
-7. Lint the source code: `make lint`
+1. Lint the source code: `make lint`
+2. Build the application: `make build`
+3. Run the application: `make run`
+4. Test the application: `make test`
+5. Stop the application: `make stop`
+6. Clean up: `make clean`
+7. Display help: `make help`
 
 For more information about the available make targets, run `make help`.

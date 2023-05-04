@@ -3,6 +3,9 @@
 help:	## Display help for the commands usage
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
+lint:	## Run the linter golangci-lint
+	golangci-lint run
+
 build:	## Compile the source code of the application to a binary named awesome-api
 	go build
 
@@ -19,6 +22,3 @@ clean:	## Stop the application. Delete the binary and the log file
 test:	## Test to ensure that it behave as expected when the application start.
 	curl -i -X GET http://localhost:9999
 	curl -i -X GET http://localhost:9999/health
-
-lint:	## Run the linter golangci-lint
-	golangci-lint run
