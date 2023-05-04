@@ -25,4 +25,3 @@ lint:	## Run the linter golangci-lint
 
 unit-tests:	## unit-tests
 	go test -v -short -coverprofile=coverage-units.out
-	go tool cover -html=coverage.out -o coverage.html
