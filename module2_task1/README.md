@@ -25,5 +25,6 @@ Before you can build, run, and test this project, you'll need to have the follow
 4. Stop the application: `make stop`
 5. Clean up: `make clean`
 6. Display help: `make help`
+7. Lint the source code: `make lint`
 
 For more information about the available make targets, run `make help`.
