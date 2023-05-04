@@ -36,10 +36,7 @@ func HealthCheckHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("HIT: healthcheck")
 
 	// Write the string "ALIVE" into the response's body and ignore the error using the blank identifier "_"
-	_, err := io.WriteString(w, "ALIVE")
-	if err != nil {
-		log.Printf("Error writing response: %v", err)
-	}
+	_, _ = io.WriteString(w, "ALIVE")
 
 	// End of the function: return HTTP 200 by default
 }
