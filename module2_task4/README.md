@@ -30,5 +30,6 @@ Before you can build, run, and test this project, you'll need to have the follow
 9. Run integration tests: `make integration-tests`
 10. Lints the Markdown files and checks for dead links: `make check`
 11. Validates the generated HTML files and prints the result on stdout: `make validate`
+12. Create a new post: `make post`
 
 For more information about the available make targets, run `make help`.
