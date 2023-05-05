@@ -37,6 +37,18 @@ func Test_HelloHandler(t *testing.T) {
 			responseCode: 200,
 			body:         "Hello there!",
 		},
+		{
+			name:         "Default there",
+			queryString:  "name=Holberton",
+			responseCode: 200,
+			body:         "Hello Holberton!",
+		},
+		{
+			name:         "Multiple names",
+			queryString:  "name=Ada&name=Alan&name=Grace",
+			responseCode: 200,
+			body:         "Hello Grace!",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
