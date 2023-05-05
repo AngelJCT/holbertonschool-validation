@@ -1,4 +1,4 @@
-.PHONY: build post run stop clean help test lint unit-tests integration-tests check markdown-lint markdown-link-check
+.PHONY: build post run stop clean help test lint unit-tests integration-tests check markdownlint markdown-link-check
 
 help:	## Display help for the commands usage
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST) | sort
@@ -38,9 +38,11 @@ integration-tests:	## integration tests
 	go test -v -coverprofile=coverage-integrations.out
 
 check:	## Check lint of the Markdown and analysis of the links
-	markdown-lint ./content/posts/*.md
+	markdownlint ./content/posts/*.md
 	markdown-link-check ./content/posts/*.md
 
 validate:	## validate
 	make build
-	@echo "./dist/index.html" | xargs -I % sh -c 'curl -s -H "Content-Type: text/html" -d @% -X POST https://validator.holberton.network/html-checker || echo "SUCCESS"'
+	-git clone https://github.com/holbertonschool/W3C-Validator.git
+	-./W3C-Validator/w3c_validator.py ./dist/index.html
+	-rm -rf ./W3C-Validator
