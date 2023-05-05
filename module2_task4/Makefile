@@ -4,7 +4,6 @@ help:	## Display help for the commands usage
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST) | sort
 
 build:	## Compile the source code of the application to a binary named awesome-api
-	check
 	hugo
 	go build
 
@@ -44,6 +43,6 @@ check:	## Check lint of the Markdown and analysis of the links
 	markdown-link-check ./content/posts/*.md
 
 validate:	## validate
-	-make build
+	make build
 	-git clone https://github.com/holbertonschool/W3C-Validator.git
 	-./W3C-Validator/w3c_validator.py ./dist/index.html
