@@ -40,8 +40,8 @@ integration-tests:	## integration tests
 	go test -v -coverprofile=coverage-integrations.out
 
 check:	## Check lint of the Markdown and analysis of the links
-	markdownlint ./content/posts/*.md || exit 1
-	markdown-link-check ./content/posts/*.md || exit 1
+	markdownlint ./content/posts/*.md
+	markdown-link-check ./content/posts/*.md
 
 validate:	## validate
 	-make build
