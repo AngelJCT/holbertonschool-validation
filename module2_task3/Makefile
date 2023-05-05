@@ -13,8 +13,8 @@ stop:	## Stop the application with the command kill
 	kill $(shell pgrep awesome-api)
 
 clean:	## Clean the generated files
-	make stop
-	rm -f ./awesome-api ./awesome-api.log coverage*
+	-make stop
+	-rm -f ./awesome-api ./awesome-api.log coverage*
 
 test:	## Test to ensure that it behave as expected when the application start.
 	make unit-tests 
