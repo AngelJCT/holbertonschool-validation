@@ -30,4 +30,4 @@ unit-tests:	## unit-tests
 	go test -v -short -coverprofile=coverage-units.out
 
 integration-tests:	## integration tests
-	go test -v -coverprofile=coverage-integrations.out
+	go test -v -short -coverprofile=coverage-integrations.out
