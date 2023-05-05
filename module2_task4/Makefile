@@ -41,7 +41,7 @@ integration-tests:	## integration tests
 
 check:	## Check lint of the Markdown and analysis of the links
 	markdownlint ./content/posts/*.md || exit 1
-	find ./content/posts -name "*.md" -exec markdown-link-check {} \; || exit 1
+	markdown-link-check ./content/posts/*.md || exit 1
 
 validate:	## validate
 	-make build
