@@ -14,9 +14,7 @@ stop:	## Stop the application with the command kill
 
 clean:	## Clean the generated files
 	make stop
-	rm -f ./awesome-api ./awesome-api.log
-	rm -f coverage-units.out
-	rm -f coverage-integrations.out
+	rm -f ./awesome-api ./awesome-api.log coverage*
 
 test:	## Test to ensure that it behave as expected when the application start.
 	make unit-tests 
