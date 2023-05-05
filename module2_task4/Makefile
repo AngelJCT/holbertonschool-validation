@@ -4,7 +4,7 @@ help:	## Display help for the commands usage
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST) | sort
 
 build:	## Compile the source code of the application to a binary named awesome-api
-	-make check
+	check
 	hugo
 	go build
 
@@ -40,8 +40,8 @@ integration-tests:	## integration tests
 	go test -v -coverprofile=coverage-integrations.out
 
 check:	## Check lint of the Markdown and analysis of the links
-	markdownlint ./content/posts/*.md
-	markdown-link-check ./content/posts/*.md
+	markdownlint ./content/posts/*.md || exit 1
+	find ./content/posts -name "*.md" -exec markdown-link-check {} \; || exit 1
 
 validate:	## validate
 	-make build
