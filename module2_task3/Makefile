@@ -1,4 +1,4 @@
-.PHONY: build run stop clean help test lint
+.PHONY: build run stop clean help test lint unit-tests integration-tests
 
 help:	## Display help for the commands usage
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
@@ -13,7 +13,7 @@ run:	## Run the application in background by executing the binary and write logs
 stop:	## Stop the application with the command kill
 	kill $(shell pgrep awesome-api)
 
-clean:	## Stop the application. Delete the binary and the log file
+clean:	## Clean the generated files
 	make stop
 	rm -f ./awesome-api ./awesome-api.log
 	rm -f coverage-units.out
