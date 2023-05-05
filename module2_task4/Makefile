@@ -46,3 +46,4 @@ validate:	## validate
 	make build
 	-git clone https://github.com/holbertonschool/W3C-Validator.git
 	-./W3C-Validator/w3c_validator.py ./dist/index.html
+	-rm -rf W3C-Validator
