@@ -33,6 +33,7 @@ clean:	## Clean the generated files
 	-rm -f ./awesome-api ./awesome-api.log .coverage*
 
 test:	## Test to ensure that it behave as expected when the application start.
+	-make build
 	make unit-tests 
 	make integration-tests
 
