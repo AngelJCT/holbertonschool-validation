@@ -18,9 +18,10 @@ clean:	## Clean the generated files
 	rm -f coverage-units.out
 	rm -f coverage-integrations.out
 
-test:	unit-tests integration-tests	## Test to ensure that it behave as expected when the application start.
+test:	## Test to ensure that it behave as expected when the application start.
 	curl -i -X GET http://localhost:9999
 	curl -i -X GET http://localhost:9999/health
+	unit-tests integration-tests
 
 lint:	## Run the linter golangci-lint
 	golangci-lint run
@@ -29,4 +30,4 @@ unit-tests:	## unit-tests
 	go test -v -short -coverprofile=coverage-units.out
 
 integration-tests:	## integration tests
-	go test -v -coverprofile=coverage-integration.out
+	go test -v -coverprofile=coverage-integrations.out
