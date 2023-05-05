@@ -38,14 +38,9 @@ integration-tests:	## integration tests
 	go test -v -coverprofile=coverage-integrations.out
 
 check:	## Check lint of the Markdown and analysis of the links
-	markdown-lint
-	markdown-link-check
-
-markdown-lint:	## markdown-lint
-	markdownlint-cli content
-
-markdown-link-check:	## markdown-link-check
-	markdown-link-check -p -v content
+	markdown-lint ./content/posts/*.md
+	markdown-link-check ./content/posts/*.md
 
 validate:	## validate
+	make build
 	@echo "./dist/index.html" | xargs -I % sh -c 'curl -s -H "Content-Type: text/html" -d @% -X POST https://validator.holberton.network/html-checker || echo "SUCCESS"'
