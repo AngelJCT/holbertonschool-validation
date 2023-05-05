@@ -36,7 +36,7 @@ func setupRouter() *mux.Router {
 
 func HealthCheckHandler(w http.ResponseWriter, r *http.Request) {
 	// Print a line in the logs
-	fmt.Println("HIT: healthcheck")
+	fmt.Println("HIT: healthCheck")
 
 	// Write the string "ALIVE" into the response's body and ignore the error using the blank identifier "_"
 	_, _ = io.WriteString(w, "ALIVE")
