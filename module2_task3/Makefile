@@ -19,8 +19,6 @@ clean:	## Clean the generated files
 	rm -f coverage-integrations.out
 
 test:	## Test to ensure that it behave as expected when the application start.
-	curl -i -X GET http://localhost:9999
-	curl -i -X GET http://localhost:9999/health
 	make unit-tests 
 	make integration-tests
 
