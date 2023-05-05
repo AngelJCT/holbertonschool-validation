@@ -1,12 +1,18 @@
-.PHONY: build post run stop clean help test lint unit-tests integration-tests check markdownlint markdown-link-check
+.PHONY: build post run stop clean help test lint unit-tests integration-tests check markdownlint markdown-link-check go-build hugo-build
 
 help:	## Display help for the commands usage
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST) | sort
 
+go-build:	## Compile the source code of the API to a binary named awesome-api
+	go build
+
+hugo-build:	## Compile the source code of the static website using Go-Hugo
+	hugo
+
 build:	## Compile the source code of the application to a binary named awesome-api
 	make check
-	hugo
-	go build
+	make hugo-build
+	make go-build
 
 post:	## Create a new post using POST_NAME and POST_TITLE env variables
 	@if [ -z "$(POST_NAME)" ] || [ -z "$(POST_TITLE)" ]; then \
@@ -24,7 +30,7 @@ stop:	## Stop the application with the command kill
 
 clean:	## Clean the generated files
 	-make stop
-	-rm -f ./awesome-api ./awesome-api.log coverage*
+	-rm -f ./awesome-api ./awesome-api.log .coverage*
 
 test:	## Test to ensure that it behave as expected when the application start.
 	make unit-tests 
