@@ -1,10 +1,18 @@
-.PHONY: build run stop clean help test lint unit-tests integration-tests check markdown-lint markdown-link-check
+.PHONY: build post run stop clean help test lint unit-tests integration-tests check markdown-lint markdown-link-check
 
 help:	## Display help for the commands usage
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST) | sort
 
 build:	lint ## Compile the source code of the application to a binary named awesome-api
 	go build
+
+post:	## Create a new post using POST_NAME and POST_TITLE env variables
+	@if [ -z "$(POST_NAME)" ] || [ -z "$(POST_TITLE)" ]; then \
+		echo "Error: POST_NAME and POST_TITLE environment variables must be set."; \
+		exit 1; \
+	fi
+	hugo new posts/$(POST_NAME).md
+	echo "---\ntitle: \"$(POST_TITLE)\"\ndate: $$(date +%Y-%m-%dT%H:%M:%S%z)\ndraft: true\n---\n" > content/posts/$(POST_NAME).md
 
 run:	## Run the application in background by executing the binary and write logs
 	./awesome-api >./awesome-api.log 2>&1 &
