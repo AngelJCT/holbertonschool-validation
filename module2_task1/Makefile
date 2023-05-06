@@ -10,7 +10,7 @@ run:	## Run the application in background by executing the binary and write logs
 	./awesome-api >./awesome-api.log 2>&1 &
 
 stop:	## Stop the application with the command kill
-	kill $(shell pgrep awesome-api)
+	kill $(shell pgrep awesome-api) && rm awesome-api.pid
 
 clean:	## Stop the application. Delete the binary and the log file
 	make stop
