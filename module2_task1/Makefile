@@ -4,7 +4,8 @@ help:	## Display help for the commands usage
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
 build:	lint ## Compile the source code of the application to a binary named awesome-api
-	go build
+	go get github.com/gorilla/mux
+	go build -o awesome-api
 
 run:	## Run the application in background by executing the binary and write logs
 	./awesome-api >./awesome-api.log 2>&1 &
