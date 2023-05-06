@@ -3,7 +3,8 @@
 help:	## Display help for the commands usage
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-build:	lint ## Compile the source code of the application to a binary named awesome-api
+build:	## Compile the source code of the application to a binary named awesome-api
+	-make lint
 	go get github.com/gorilla/mux
 	go build -o awesome-api
 
