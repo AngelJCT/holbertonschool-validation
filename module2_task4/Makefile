@@ -5,7 +5,6 @@ help:	## Display help for the commands usage
 
 build:	check ## Compile the source code of the application to a binary named awesome-api
 	hugo
-	go build
 
 post:	## Create a new post using POST_NAME and POST_TITLE env variables
 	@if [ -z "$(POST_NAME)" ] || [ -z "$(POST_TITLE)" ]; then \
