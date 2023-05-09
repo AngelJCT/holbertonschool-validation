@@ -1,0 +1,21 @@
+name: module3_task0
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Position and make help
+      run: |
+        cd <module3_task0>
+        make help
